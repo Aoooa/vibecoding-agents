@@ -29,6 +29,10 @@ subagent: true
 | `go.mod` / `go.sum` | Go module 版本 |
 | `CMakeLists.txt` / `conanfile.txt` | C/C++ 依赖、SDK |
 | `sdkconfig` / `idf.py --version` | 嵌入式 SDK 版本 |
+| `Kconfig` / `prj.conf` / `syscfg.yml` | 硬件配置、外设使能、堆栈大小 |
+| `platformio.ini` / `CMakeLists.txt` | 芯片型号、Flash/RAM 大小、编译选项 |
+| 外设驱动头文件 (`*_hal*.h`, `*_periph*.h`) | 外设列表、DMA 通道、中断号 |
+| `README.md` / `CHANGELOG.md` | 项目概述、历史变更 |
 | `composer.json` | PHP 依赖 |
 | `Gemfile` | Ruby gem 版本 |
 
@@ -106,6 +110,23 @@ subagent: true
 
 【结论】
 [一句话回答，置信度: 高/中/低]
+```
+
+## 测试文档专项搜集
+
+当任务为「测试文档编写」时，除常规工程版本环境外，**额外输出设备能力摘要**：
+
+```
+【设备能力摘要】（仅测试任务时追加）
+
+芯片: [型号，从 sdkconfig/platformio.ini 提取]
+主频: [MHz]
+Flash: [大小] | RAM: [大小]
+使能外设: [SPIx2, I2C, UARTx3, CAN, ADC 12bit, ...]
+DMA 通道: [数量]
+中断: [总数/优先级级别]
+特殊硬件: [外部看门狗/加密芯片/外部 Flash/...]
+硬件约束: [无故障注入/无外部调试器/无电流测量/...]
 ```
 
 ## 铁律

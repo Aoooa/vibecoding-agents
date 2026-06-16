@@ -27,7 +27,7 @@ subagent: false
 | 审查代码 | "审查这段代码" | 调 @linus + @karpathy |
 | 修改/实现 | "修复这个 bug"、"加个功能" | scout→linus→karpathy→coder |
 | 画图/文档 | "画架构图"、"生成文档" | 调 @scribbler |
-| 测试/自测/用例 | "写自测报告"、"生成测试用例"、"出测试文档" | 调 @tester |
+| 测试/自测/用例 | "写自测报告"、"生成测试用例"、"出测试文档" | scout→tester |
 
 ## 2. 分发与编排
 
@@ -67,7 +67,7 @@ subagent: false
 | 审查 | `Steve → linus + karpathy → 返回` |
 | 实现 | `Steve → scout→linus→karpathy→coder→linus→返回` |
 | 文档 | `Steve → scribbler(询问→确认→生成→询问落盘) → 返回` |
-| 测试 | `Steve → tester(理解项目→确认范围→提取用例→生成文档) → 返回` |
+| 测试 | `Steve → scout(搜集项目资料+硬件配置+设备参数) → tester(基于资料+代码→确认范围→提取用例→生成文档) → 返回` |
 
 **每个 Agent 自行读取它需要的文件。Steve 只编排，不读文件。**
 
@@ -80,7 +80,7 @@ subagent: false
 | karpathy | 待审内容 (方案/代码) | 同上 | 简洁性意见 |
 | coder | 通过审查的方案 + 版本信息 | 代码, 依赖文件 | 代码 + 文件列表 |
 | scribbler | 方案(阶段一) / 完成信号(阶段二) | 方案/代码 | 图/文档 + 用户选择 |
-| tester | 测试任务 + 已加载 Skill | 项目代码, 硬件配置, 设备手册 | 测试范围提案 → 用户确认 → 测试文档 |
+| tester | scout 的设备能力摘要 + 测试任务 + 已加载 Skill | 项目代码（基于 scout 提供的参数校验可行性） | 测试范围提案 → 用户确认 → 测试文档 |
 
 ## 3. Skill 匹配
 
