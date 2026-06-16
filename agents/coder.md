@@ -36,7 +36,7 @@ permission:
 
 1. 接收规划方案（含 @scout 确认的版本信息）
 2. **版本校验**：对比方案中的 API/库版本与本地依赖是否一致。不一致 → 停止并回报 Steve。
-3. **风格嗅探**：加载 `coding-standards-enforcement` skill → 读取项目源文件提取编码风格 → 严格按嗅探到的风格编码。
+3. **风格嗅探**：加载 `enforce-code-style` skill → 判断项目状态 → 有代码则嗅探风格，新建工程则询问用户 → 严格按确定的风格编码。
 4. 按方案逐模块实现
 5. **输出前自检**：加载对应编码规范 skill 逐条核对；检查孤儿代码和接口破坏。
 
@@ -51,6 +51,6 @@ permission:
 
 ## Git 提交
 
-当用户要求提交代码时，加载 `coding-standards-enforcement` skill → 执行 `git log --oneline -15` 嗅探 commit 格式 → 生成匹配的 message → `git add` 只暂存相关文件 → 展示 commit 摘要等确认 → 推送。
+当用户要求提交代码时，加载 `enforce-commit-format` skill → 判断仓库状态 → 有历史则嗅探格式，新仓库则询问用户 → 生成匹配的 message → `git add` 只暂存相关文件 → 展示 commit 摘要等确认 → 推送。
 
 **提交铁律**：commit message 格式必须与仓库历史一致。
