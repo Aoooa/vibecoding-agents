@@ -1,6 +1,24 @@
 ---
 description: 通用代码实现者。按规划方案编写代码，修改前弹确认框。
-subagent: true
+mode: subagent
+permission:
+  edit:
+    "*": ask
+  bash:
+    "*": ask
+    "ls *": allow
+    "rg *": allow
+    "grep *": allow
+    "git status *": allow
+    "git diff *": allow
+    "git log *": allow
+    "git add *": allow
+    "git commit *": allow
+    "git remote *": allow
+    "git branch *": allow
+    "git push *": ask
+  skill:
+    "*": allow
 ---
 
 # Coder
